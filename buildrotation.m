@@ -11,6 +11,11 @@ function R = buildrotation(thx,thy,thz)
 %
 % R : the resulting rotation matrix
 %
+thx = deg2rad(thx);
+thy = deg2rad(thy);
+thz = deg2rad(thz);
+
+
 Rx = [ 1 0 0 ; ...
        0 cos(thx) -sin(thx) ; ...
        0 sin(thx) cos(thx) ];

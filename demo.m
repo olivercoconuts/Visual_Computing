@@ -88,21 +88,22 @@ M = grab_0;
 D = grab_4;
 n = size(D,2);
 
-[Ricp Ticp ER t] = icp(M, D, 300, 'Matching', 'kDtree', 'Extrapolation', true);
+[Ricp Ticp ER t] = icp(M, D, 100, 'Matching', 'kDtree', 'Extrapolation', true);
 
 % Transform data-matrix using ICP result
 Dicp = Ricp * D + repmat(Ticp, 1, n);
 
 % Plot model points blue and transformed points red
-figure;
-subplot(2,2,1);
-plot3(M(1,:),M(2,:),M(3,:),'bo',D(1,:),D(2,:),D(3,:),'r.');
-axis equal;
-xlabel('x'); ylabel('y'); zlabel('z');
-title('Red: z=sin(x)*cos(y), blue: transformed point cloud');
+% figure;
+% subplot(2,2,1);
+% plot3(M(1,:),M(2,:),M(3,:),'bo',D(1,:),D(2,:),D(3,:),'r.');
+% axis equal;
+% xlabel('x'); ylabel('y'); zlabel('z');
+% title('Red: z=sin(x)*cos(y), blue: transformed point cloud');
 
 % Plot the results
-subplot(2,2,2);
+figure;
+% subplot(2,2,2);
 plot3(M(1,:),M(2,:),M(3,:),'bo',Dicp(1,:),Dicp(2,:),Dicp(3,:),'r.');
 axis equal;
 xlabel('x'); ylabel('y'); zlabel('z');
