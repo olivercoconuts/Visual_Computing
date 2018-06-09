@@ -1,4 +1,4 @@
-function [] = mesh_2_ply(X,normals,xColor,tri,filePath)
+function [] = mesh_to_ply(X,xColor,tri,filePath)
 %
 % Code from Omar Santiago (CS117, spring class of 2015)
 %
@@ -11,8 +11,8 @@ function [] = mesh_2_ply(X,normals,xColor,tri,filePath)
 %   filepath of the file to be writen and name
 %
 %
-    if nargin<5
-        error('Function takes 5 arguments');
+    if nargin<4
+        error('Function takes 4 arguments');
     end
     if(size(X,1) ~= 3)
         error('X must be a 3 by N matrix')
@@ -27,9 +27,6 @@ function [] = mesh_2_ply(X,normals,xColor,tri,filePath)
     fprintf(fid,'property float x\n');
     fprintf(fid,'property float y\n');
     fprintf(fid,'property float z\n');
-    fprintf(fid,'property float nx\n');
-    fprintf(fid,'property float ny\n');
-    fprintf(fid,'property float nz\n');
     fprintf(fid,'property uchar red\n');
     fprintf(fid,'property uchar green\n');
     fprintf(fid,'property uchar blue\n');
@@ -42,9 +39,6 @@ function [] = mesh_2_ply(X,normals,xColor,tri,filePath)
         fprintf(fid,'%f ',X(1,j));
         fprintf(fid,'%f ',X(2,j));
         fprintf(fid,'%f ',X(3,j));
-        fprintf(fid,'%f ',normals(j,1));
-        fprintf(fid,'%f ',normals(j,2));
-        fprintf(fid,'%f ',normals(j,3));
         fprintf(fid,'%u ',uint8((xColor(1,j)*255)));
         fprintf(fid,'%u ',uint8((xColor(2,j)*255)));
         fprintf(fid,'%u ',uint8((xColor(3,j)*255)));
@@ -58,3 +52,4 @@ function [] = mesh_2_ply(X,normals,xColor,tri,filePath)
         fprintf(fid,'\n');
     end
     fclose(fid);
+    

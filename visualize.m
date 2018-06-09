@@ -1,8 +1,9 @@
-% load cleaned_mesh/grab_3_smooth.mat
+function [tri] = visualize(X)
+load cam.mat;
 
 tri = delaunay(X(1,:),X(2,:));
 
-trithresh = 20;   %10mm
+trithresh = 2;   %10mm
 
 fprintf('triangulating from left view\n');
 ntri = size(tri,1);
